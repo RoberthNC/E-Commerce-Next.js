@@ -1,7 +1,5 @@
-export default function Home() {
-  return (
-    <main className="">
-      <h1>Hola Mundo</h1>
-    </main>
-  );
+import { redirect } from "next/navigation";
+
+export default function () {
+  redirect("/shop");
 }
