@@ -4,9 +4,11 @@ import Link from "next/link";
 import { IoSearchOutline, IoCartOutline } from "react-icons/io5";
 import { titleFont } from "@/config/fonts";
 import { usePathname } from "next/navigation";
+import { useUIStore } from "@/store";
 
 export const TopMenu = () => {
   const path = usePathname();
+  const openMenu = useUIStore((state) => state.openSideMenu);
   return (
     //TODO: change the condition for fixed menu
     <nav
@@ -57,7 +59,10 @@ export const TopMenu = () => {
             <IoCartOutline className="w-5 h-5" />
           </div>
         </Link>
-        <button className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 hover:duration-700">
+        <button
+          onClick={() => openMenu()}
+          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 hover:duration-700"
+        >
           Menú
         </button>
       </div>
