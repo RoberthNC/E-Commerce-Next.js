@@ -1,10 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import { IoSearchOutline, IoCartOutline } from "react-icons/io5";
 import { titleFont } from "@/config/fonts";
+import { usePathname } from "next/navigation";
 
 export const TopMenu = () => {
+  const path = usePathname();
   return (
-    <nav className="flex px-5 justify-between items-center w-full fixed left-0 top-0 right-0">
+    //TODO: change the condition for fixed menu
+    <nav
+      className={`flex px-5 justify-between items-center w-full ${
+        path === "/shop/category/kids" ? "fixed left-0 top-0 right-0" : ""
+      }`}
+    >
       {/* Logo */}
       <div>
         <Link href="/shop">
