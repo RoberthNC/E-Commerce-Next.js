@@ -31,19 +31,19 @@ export const TopMenu = () => {
           className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 hover:duration-700"
           href="/shop/category/men"
         >
-          Hombres
+          Men
         </Link>
         <Link
           className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 hover:duration-700"
           href="/shop/category/women"
         >
-          Mujeres
+          Women
         </Link>
         <Link
           className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 hover:duration-700"
-          href="/shop/category/kids"
+          href="/shop/category/kid"
         >
-          Niños
+          Kids
         </Link>
       </div>
       {/* Search - Cart - Menú */}
@@ -63,7 +63,7 @@ export const TopMenu = () => {
           onClick={() => openMenu()}
           className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 hover:duration-700"
         >
-          Menú
+          Menu
         </button>
       </div>
     </nav>
