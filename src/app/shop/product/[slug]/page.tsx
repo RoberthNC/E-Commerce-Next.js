@@ -1,6 +1,12 @@
 import { titleFont } from "@/config/fonts";
 import { initialData } from "@/seed/seed";
 import { notFound } from "next/navigation";
+import {
+  ProductMobileSlideshow,
+  ProductSlideshow,
+  QuantitySelector,
+  SizeSelector,
+} from "@/components/";
 
 interface Props {
   params: {
@@ -15,7 +21,18 @@ export default function ({ params: { slug } }: Props) {
     <div className="mt-5 mb-20 grid grid-cols-1 md:grid-cols-3 gap-3">
       {/* Slideshow */}
       <div className="col-span-1 md:col-span-2">
-        <h1 className="">Hello</h1>
+        {/* Mobile Slideshow */}
+        <ProductMobileSlideshow
+          className="block md:hidden"
+          title={product.title}
+          images={product.images}
+        />
+        {/* Desktop Slideshow */}
+        <ProductSlideshow
+          className="hidden md:block"
+          title={product.title}
+          images={product.images}
+        />
       </div>
       {/* Details */}
       <div className="col-span-1 px-5">
@@ -24,7 +41,12 @@ export default function ({ params: { slug } }: Props) {
         </h1>
         <p className="text-lg mb-5">${product.price}</p>
         {/* Sizes selector */}
+        <SizeSelector
+          selectedSize={product.sizes[0]}
+          availableSize={product.sizes}
+        />
         {/* Quantity selector */}
+        <QuantitySelector quantity={2} />
         {/* Button */}
         <button className="btn-primary my-5">Add to cart</button>
         {/* Description */}
