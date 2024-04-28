@@ -13,7 +13,7 @@ export const TopMenu = () => {
     //TODO: change the condition for fixed menu
     <nav
       className={`flex px-5 justify-between items-center w-full ${
-        path === "/shop/category/kids" ? "fixed left-0 top-0 right-0" : ""
+        path === "/shop/empty" ? "fixed left-0 top-0 right-0" : ""
       }`}
     >
       {/* Logo */}
