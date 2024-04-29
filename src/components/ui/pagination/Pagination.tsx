@@ -50,10 +50,13 @@ export const Pagination = ({ totalPages }: Props) => {
             <li key={page + "-" + i} className="page-item">
               <Link
                 className={clsx(
-                  "page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800  hover:bg-gray-200 focus:shadow-none",
+                  "page-link relative block py-1.5 px-3 border-0  outline-none transition-all duration-300 rounded  focus:shadow-none",
                   {
-                    "bg-blue-500 shadow-sm text-white hover:bg-blue-400 transition-all duration-700":
+                    "bg-blue-500 text-white hover:bg-blue-400":
                       page === currentPage,
+                  },
+                  {
+                    "text-gray-800  hover:bg-gray-200": page !== currentPage,
                   }
                 )}
                 href={createPageUrl(page)}
