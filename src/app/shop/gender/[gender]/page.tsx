@@ -34,7 +34,6 @@ export default async function ({ params, searchParams }: Props) {
   }
   return (
     <>
-      <h1>{gender}</h1>
       <Title
         title={`Articles ${label[gender]}`}
         subtitle={`All the products for ${gender}`}
