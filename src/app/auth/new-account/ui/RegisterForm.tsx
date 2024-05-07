@@ -1,8 +1,10 @@
 "use client";
 
-import clsx from "clsx";
+import { useState } from "react";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
+import clsx from "clsx";
+import { login, registerUser } from "@/actions";
 
 interface FormInputs {
   name: string;
@@ -11,6 +13,7 @@ interface FormInputs {
 }
 
 export const RegisterForm = () => {
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const {
     register,
     handleSubmit,
@@ -19,8 +22,13 @@ export const RegisterForm = () => {
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     const { name, email, password } = data;
-    console.log({ name, email, password });
-    //TODO: Server Action
+    const response = await registerUser(name, email, password);
+    if (!response.ok) {
+      setErrorMessage(response.message!);
+      return;
+    }
+    await login(email.toLowerCase(), password);
+    window.location.replace("/shop");
   };
 
   return (
@@ -60,6 +68,7 @@ export const RegisterForm = () => {
         {...register("password", { required: true, minLength: 6 })}
       />
 
+      <span className="text-red-500 mb-2">{errorMessage}</span>
       <button className="btn-primary">Register</button>
 
       {/* divisor l ine */}

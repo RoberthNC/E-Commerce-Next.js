@@ -20,3 +20,14 @@ export async function authenticate(
     return "CredentialsSignin";
   }
 }
+
+export const login = async (name: string, password: string) => {
+  try {
+    await signIn("credentials", { name, password });
+  } catch (error) {
+    return {
+      ok: false,
+      message: "Error during login session",
+    };
+  }
+};
